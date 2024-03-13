@@ -14,6 +14,7 @@ export class PostListComponent {
   postsJson = '';
 
   constructor(private postService: ApiService) {
+    // Remove this and create a component that will display the posts
     this.posts$.subscribe((posts: any) => {
       this.postsJson = JSON.stringify(posts, null, 2);
     });
