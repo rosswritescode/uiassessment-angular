@@ -15,7 +15,6 @@ export class ApiService {
   addPost(title: string, content: string) {
     const post = { title, content }; // Create a new post object
     this.postsArray.push(post); // Add the post to the array
-    alert({ post })
     this.postsSubject.next([...this.postsArray]); // Add the new post to the array
   }
 }
