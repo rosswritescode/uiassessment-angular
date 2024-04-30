@@ -26,17 +26,23 @@ import { ApiService } from '../api.service';
 export class CreatePostComponent {
   addPostForm: FormGroup;
 
+  // 1. call onAddPost when form is submitted 
+  // 2. add required validation for both fields 
+  // 3. call saveDraft after 5 seconds of inactivity 
+  
   constructor(private formBuilder: FormBuilder, private postService: ApiService) {
-    // 2. Add in required validation for both inputs
     this.addPostForm = this.formBuilder.group({
       title: [''],
       content: ['']
     });
   }
 
-  // 1. Make the form submit this when the button is clicked
   onAddPost() {
     this.postService.addPost(this.addPostForm.value.title, this.addPostForm.value.content);
     this.addPostForm.reset();
+  }
+
+  saveDraft() {
+    console.log("Draft saved: ", this.addPostForm.value.title, this.addPostForm.value.content);
   }
 }
